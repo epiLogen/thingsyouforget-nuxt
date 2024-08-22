@@ -34,7 +34,7 @@ const props = defineProps({
     text-align: left;
     line-height: 1.5em;
     margin-top: 5px;
-    background-color: black;
+    background-color: inherit;
     font-size: 1.2em;
 }
 

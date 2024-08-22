@@ -5,7 +5,7 @@ const URL = `mongodb+srv://${config.MONGO_ADMIN}:${config.MONGO_ADMIN_PASS}@${co
 
 export default async () => {
   try {
-    await mongoose.connect(URL, { useNewUrlParser: true })
+    await mongoose.connect(URL)
     console.log("DB connection established.")
   } catch (err) {
     console.log("DB connection failed.", err)
