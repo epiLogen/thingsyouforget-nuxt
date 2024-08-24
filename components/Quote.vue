@@ -5,6 +5,8 @@ const props = defineProps({
         required: true
     }
 })
+
+let alternates = ref([])
 </script>
 
 <template>
@@ -26,7 +28,7 @@ const props = defineProps({
 .quote-card {
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 15px;
     color: #ffe6b3;
     height: auto;
     width: 500px;

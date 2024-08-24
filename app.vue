@@ -35,29 +35,29 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="app">
-      <Link rel="icon" href="/favicon.ico" />
-      <Title>Things you forget</Title>
+	<div class="app">
+		<Link rel="icon" href="/favicon.ico" />
+		<Title>Things you forget</Title>
 
-      <header>
-          <div class="logo">things you forget...</div>
-          <div class="buttons">
-              <div class="btn btn-rewind" :class="{ 'disabled': !previous.length }" @click="rewind()"><Icon name="fa6-solid:rotate-left"/></div>
-              <div class="btn btn-shuffle" @click="getRandomQuote()"><Icon name="fa6-solid:dice" /></div>
-          </div>
-      </header>
+		<header>
+			<div class="logo">things you forget...</div>
+			<div class="buttons">
+				<div class="btn btn-rewind" :class="{ 'disabled': !previous.length }" @click="rewind()"><Icon name="fa6-solid:rotate-left"/></div>
+				<div class="btn btn-shuffle" @click="getRandomQuote()"><Icon name="fa6-solid:dice" /></div>
+			</div>
+		</header>
 
-      <main>
-          <transition name="fade" mode="out-in" appear>
-              <div v-if="current == null" class="loader"><Icon name="svg-spinners:6-dots-scale"/></div>
-              <Quote v-else :quote="current" :key="current.id"/>
-          </transition>
-      </main>
+		<main>
+			<transition name="fade" mode="out-in" appear>
+				<div v-if="current == null" class="loader"><Icon name="svg-spinners:6-dots-scale"/></div>
+				<Quote v-else :quote="current" :key="current.id"/>
+			</transition>
+		</main>
 
-      <footer>
-          &copy; epiLogen 2024 &ensp;&bull;&ensp; {{ quotes.length }} quotes
-      </footer>
-  </div>
+		<footer>
+			&copy; epiLogen 2024 &ensp;&bull;&ensp; {{ quotes.length }} quotes
+		</footer>
+	</div>
 </template>
 
 <style scoped>
@@ -109,7 +109,7 @@ header {
     background-color: inherit;
     width: 100%;
     gap: 30px;
-    color: #00cccc;
+    color: #99e6ff;
     padding: 40px 0px 20px;
     user-select: none;
 }
@@ -123,7 +123,7 @@ header {
 
 .buttons {
     display: flex;
-    gap: 15px;
+    gap: 20px;
     align-items: center;
 }
 
@@ -134,11 +134,12 @@ header {
     height: 40px;
     aspect-ratio: 1;
     border-radius: 50%;
-    background-color: #004d4d;
+    background-color: #006080;
     transition: opacity 0.15s ease-out;
     cursor: pointer;
-    border: 3px solid #00cccc;
+    border: 1px solid #0099cc;
     font-size: 1.3rem;
+	box-shadow: 0 0 4px #99e6ff;
 }
 
 .btn:hover {
@@ -159,7 +160,7 @@ footer {
     display: flex;
     justify-content: center;
     align-items: flex-end;
-    color: #00cccc;
+    color: #99e6ff;
     background-color: inherit;
     font-family: 'EB Garamond', serif;
     font-size: 1em;
