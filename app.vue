@@ -37,7 +37,7 @@ onMounted(() => {
 <template>
 	<div class="app">
 		<Link rel="icon" href="/favicon.ico" />
-		<Title>Things you forget</Title>
+		<Title>Things You Forget</Title>
 
 		<header>
 			<div class="logo">things you forget...</div>
@@ -55,7 +55,7 @@ onMounted(() => {
 		</main>
 
 		<footer>
-			&copy; epiLogen 2024 &ensp;&bull;&ensp; {{ quotes.length }} quotes
+			&copy; Things You Forget 2025 &ensp;&bull;&ensp; {{ quotes.length }} quotes
 		</footer>
 	</div>
 </template>

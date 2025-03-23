@@ -17,7 +17,7 @@ let alternates = ref([])
         <div class="voice">- {{ quote.voice }}</div>
 
         <div class="source">
-            <span class="author">{{ quote.author }}: </span>
+            <span class="author">{{ quote.author }} | </span>
             <span class="book">{{ quote.book }}</span>
         </div>
     </div>
