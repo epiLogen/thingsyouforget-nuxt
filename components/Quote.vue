@@ -13,9 +13,7 @@ let alternates = ref([])
 <div class="quote-card">
     <div class="quote-text" v-html="quote.text"></div>
     <div class="quote-source">
-
         <div class="voice">- {{ quote.voice }}</div>
-
         <div class="source">
             <span class="author">{{ quote.author }} | </span>
             <span class="book">{{ quote.book }}</span>
@@ -30,19 +28,14 @@ let alternates = ref([])
     flex-direction: column;
     gap: 15px;
     color: #ffe6b3;
-    height: auto;
-    width: 500px;
-    padding: 5px;
-    text-align: left;
+    width: min(90vw, 500px);
     line-height: 1.5em;
-    margin-top: 5px;
     background-color: inherit;
     font-size: 1.2em;
+    font-family: 'EB Garamond', serif;
 }
 
 .quote-text {
-    font-family: 'EB Garamond', serif;
-    font-weight: 400;
 }
 
 .quote-source {
@@ -50,20 +43,16 @@ let alternates = ref([])
 }
 
 .voice {
-    font-family: 'EB Garamond', serif;
     font-weight: 700;
 }
 
 .source {
-    font-family: 'EB Garamond', serif;
-    font-weight: 400;
-    color: rgb(73, 66, 66);
+    color: #484848;
     font-size: 0.85em;
     padding-left: 10px;
 }
 
 .author {
-    font-style: normal;
 }
 
 .book {
@@ -72,7 +61,7 @@ let alternates = ref([])
 
 @media (max-width: 500px) {
     .quote-card {
-        font-size: 1em;
+        font-size: 1rem;
         width: 90vw;
     }
 }

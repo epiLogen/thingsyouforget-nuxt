@@ -42,8 +42,8 @@ onMounted(() => {
 		<header>
 			<div class="logo">things you forget...</div>
 			<div class="buttons">
-				<div class="btn btn-rewind" :class="{ 'disabled': !previous.length }" @click="rewind()"><Icon name="fa6-solid:rotate-left"/></div>
-				<div class="btn btn-shuffle" @click="getRandomQuote()"><Icon name="fa6-solid:dice" /></div>
+				<div class="btn" :class="{ 'disabled': !previous.length }" @click="rewind"><Icon name="fa6-solid:rotate-left"/></div>
+				<div class="btn btn-shuffle" @click="getRandomQuote"><Icon name="fa6-solid:dice" /></div>
 			</div>
 		</header>
 
@@ -55,40 +55,48 @@ onMounted(() => {
 		</main>
 
 		<footer>
-			&copy; Things You Forget 2025 &ensp;&bull;&ensp; {{ quotes.length }} quotes
+			&copy; Things You Forget 2025 &ensp;&bull;&ensp; {{ quotes.length }} entries
 		</footer>
 	</div>
 </template>
 
 <style scoped>
-.disabled {
-	opacity: 0.3;
-	pointer-events: none;
-}
-main {
+header {
+    flex: 0 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     background-color: inherit;
+    gap: 20px;
+    color: #99e6ff;
+    padding: 40px 10px;
+    user-select: none;
+}
+
+main {
     flex: 1 1 auto;
-    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 0px 0px 10px;
+    background-color: inherit;
+    padding: 0 10px;
 }
 
-.fade-enter-from {
-    opacity: 0;
+footer {
+    flex: 0 0 50px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    color: #99e6ff;
+    background-color: inherit;
+    font-family: 'EB Garamond', serif;
+    padding: 10px 5px;
+    background-color: inherit;
 }
 
-.fade-enter-active {
-    transition: 0.3s ease-out;
-}
-
-.fade-leave-to {
-    opacity: 0;
-}
-
-.fade-leave-active {
-    transition: 0.1s ease-in;
+.disabled {
+	opacity: 0.3;
+	pointer-events: none;
 }
 
 .loader {
@@ -100,25 +108,11 @@ main {
   justify-content: center;
   align-items: center;
 }
-
-header {
-    flex: 0 0 auto;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: inherit;
-    width: 100%;
-    gap: 30px;
-    color: #99e6ff;
-    padding: 40px 0px 20px;
-    user-select: none;
-}
   
 .logo {
     font-size: 2.5rem;
     font-family: 'Dancing Script';
-    padding: 5px;
-    opacity: 1;
+    text-align: center;
 }
 
 .buttons {
@@ -131,15 +125,13 @@ header {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 40px;
+    height: 50px;
     aspect-ratio: 1;
     border-radius: 50%;
     background-color: #006080;
-    transition: opacity 0.15s ease-out;
+    transition: opacity 0.15s;
     cursor: pointer;
-    border: 1px solid #0099cc;
     font-size: 1.3rem;
-	box-shadow: 0 0 4px #99e6ff;
 }
 
 .btn:hover {
@@ -155,22 +147,22 @@ header {
     font-size: 2rem;
 }
 
-footer {
-    flex: 0 0 50px;
-    display: flex;
-    justify-content: center;
-    align-items: flex-end;
-    color: #99e6ff;
-    background-color: inherit;
-    font-family: 'EB Garamond', serif;
-    font-size: 1em;
-    padding: 10px 0px;
-    width: 100%;
-}
-
 @media (max-width: 500px) {
     .logo {
         font-size: 1.5em;
     }
+}
+
+.fade-enter-from,
+.fade-leave-to {
+    opacity: 0;
+}
+
+.fade-enter-active {
+    transition: 0.3s;
+}
+
+.fade-leave-active {
+    transition: 0.1s;
 }
 </style>
