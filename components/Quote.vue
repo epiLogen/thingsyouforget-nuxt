@@ -5,17 +5,15 @@ const props = defineProps({
         required: true
     }
 })
-
-let alternates = ref([])
 </script>
 
 <template>
 <div class="quote-card">
     <div class="quote-text" v-html="quote.text"></div>
     <div class="quote-source">
-        <div class="voice">- {{ quote.voice }}</div>
+        <div class="voice">– {{ quote.voice }}</div>
         <div class="source">
-            <span class="author">{{ quote.author }} | </span>
+            <span class="author">{{ quote.author + " | " }} </span>
             <span class="book">{{ quote.book }}</span>
         </div>
     </div>
@@ -48,8 +46,8 @@ let alternates = ref([])
 
 .source {
     color: #484848;
-    font-size: 0.85em;
-    padding-left: 10px;
+    font-size: 0.9em;
+    padding-left: 14px;
 }
 
 .author {
