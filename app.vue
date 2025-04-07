@@ -68,7 +68,7 @@ header {
     justify-content: center;
     background-color: inherit;
     gap: 20px;
-    color: #99e6ff;
+    color: #d2e0e0;
     padding: 40px 10px;
     user-select: none;
 }
@@ -87,7 +87,7 @@ footer {
     display: flex;
     justify-content: center;
     align-items: flex-end;
-    color: #99e6ff;
+    color: #d2e0e0;
     background-color: inherit;
     font-family: 'EB Garamond', serif;
     padding: 10px 5px;
@@ -128,7 +128,7 @@ footer {
     height: 50px;
     aspect-ratio: 1;
     border-radius: 50%;
-    background-color: #006080;
+    background-color: #344b4b;
     transition: opacity 0.15s;
     cursor: pointer;
     font-size: 1.3rem;
