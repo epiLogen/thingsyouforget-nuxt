@@ -1,32 +1,46 @@
 <script setup>
 import '~/assets/main.css'
 
-const quotes = await $fetch('/api/quotes')
-let current = ref(null)
-let previous = ref([])
+const quotes = ref(await $fetch('/api/quotes'))
+const currentQuote = ref(null)
+const previousQuotes = ref([])
 
 function getRandomQuote() {
-    
-	// save for rewind
-	if(previous.value.length == 5) previous.value.splice(0, 1)
-	if(current.value != null) previous.value.push(current.value)
+    const list = quotes.value
+    if (!list.length) return
 
-	// find and set new quote
-    let next = quotes[Math.floor(Math.random()*quotes.length)]
-    if(current.value == null) {
-        current.value = next
-		return
+    // First pick (nothing shown yet)
+    if (!currentQuote.value) {
+        currentQuote.value = list[Math.floor(Math.random() * list.length)]
+        return
     }
 
-    while(next.id === current.value.id) {
-        next = quotes[Math.floor(Math.random()*quotes.length)]
+    const blockedIds = new Set([
+        currentQuote.value.id,
+        ...previousQuotes.value.map(q => q.id),
+    ])
+
+    // Quotes not yet visited in this cycle
+    let candidates = list.filter(q => !blockedIds.has(q.id))
+
+    // All quotes have been visited → reset cycle
+    if (candidates.length === 0) {
+        previousQuotes.value = []
+        candidates = list.filter(q => q.id !== currentQuote.value.id)
     }
 
-    current.value = next
+    // Safety: only one quote total
+    if (!candidates.length) return
+
+    // Save history and pick a new one
+    previousQuotes.value.push(currentQuote.value)
+    currentQuote.value = candidates[Math.floor(Math.random() * candidates.length)]
 }
 
-function rewind() {
-	if(previous.value.length > 0) current.value = previous.value.pop() 
+function rewindQuote() {
+    // Pop last shown quote from history and show it.
+    const prev = previousQuotes.value.pop()
+    if (prev) currentQuote.value = prev
 }
  
 onMounted(() => {
@@ -40,17 +54,16 @@ onMounted(() => {
 		<Title>Things You Forget</Title>
 
 		<header>
-			<div class="logo">things you forget...</div>
 			<div class="buttons">
-				<div class="btn" :class="{ 'disabled': !previous.length }" @click="rewind"><Icon name="fa6-solid:rotate-left"/></div>
+				<div class="btn" :class="{ 'disabled': !previousQuotes.length }" @click="rewindQuote"><Icon name="fa6-solid:rotate-left"/></div>
 				<div class="btn btn-shuffle" @click="getRandomQuote"><Icon name="fa6-solid:dice" /></div>
 			</div>
 		</header>
 
 		<main>
 			<transition name="fade" mode="out-in" appear>
-				<div v-if="current == null" class="loader"><Icon name="svg-spinners:6-dots-scale"/></div>
-				<Quote v-else :quote="current" :key="current.id"/>
+				<div v-if="currentQuote == null" class="loader"><Icon name="svg-spinners:6-dots-scale"/></div>
+				<Quote v-else :quote="currentQuote" :key="currentQuote.id"/>
 			</transition>
 		</main>
 
@@ -87,7 +100,7 @@ footer {
     display: flex;
     justify-content: center;
     align-items: flex-end;
-    color: #d2e0e0;
+    color: #E0E0E0;
     background-color: inherit;
     font-family: 'EB Garamond', serif;
     padding: 10px 5px;
@@ -108,17 +121,12 @@ footer {
   justify-content: center;
   align-items: center;
 }
-  
-.logo {
-    font-size: 2.5rem;
-    font-family: 'Dancing Script';
-    text-align: center;
-}
 
 .buttons {
     display: flex;
     gap: 20px;
     align-items: center;
+    padding-right: 70px;
 }
 
 .btn {
@@ -128,10 +136,11 @@ footer {
     height: 50px;
     aspect-ratio: 1;
     border-radius: 50%;
-    background-color: #344b4b;
     transition: opacity 0.15s;
     cursor: pointer;
-    font-size: 1.3rem;
+    font-size: 1.5rem;
+    background-color: #282828;
+    color: #E0E0E0;
 }
 
 .btn:hover {
@@ -143,14 +152,7 @@ footer {
 }
 
 .btn-shuffle {
-    height: 70px;
-    font-size: 2rem;
-}
-
-@media (max-width: 500px) {
-    .logo {
-        font-size: 1.5em;
-    }
+    height: 80px;
 }
 
 .fade-enter-from,
@@ -163,6 +165,6 @@ footer {
 }
 
 .fade-leave-active {
-    transition: 0.1s;
+    transition: 0s;
 }
 </style>

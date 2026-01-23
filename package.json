@@ -9,12 +9,12 @@
     "postinstall": "nuxt prepare"
   },
   "devDependencies": {
-    "@nuxtjs/google-fonts": "^3.2.0",
-    "@types/node": "^22.5.0",
-    "nuxt": "^3.12.4",
-    "nuxt-icon": "^0.6.10"
+    "@nuxtjs/google-fonts": "3.2.0",
+    "@types/node": "^22.19.7",
+    "nuxt": "^4.3.0",
+    "@nuxt/icon": "^2.2.1"
   },
   "dependencies": {
-    "mongoose": "^8.5.3"
+    "mongoose": "^8.21.1"
   }
 }
