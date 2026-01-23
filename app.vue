@@ -68,7 +68,7 @@ onMounted(() => {
 		</main>
 
 		<footer>
-			&copy; Things You Forget 2025 &ensp;&bull;&ensp; {{ quotes.length }} entries
+			&copy; Things You Forget 2026 &ensp;&bull;&ensp; {{ quotes.length }} entries
 		</footer>
 	</div>
 </template>
@@ -141,6 +141,7 @@ footer {
     font-size: 1.5rem;
     background-color: #282828;
     color: #E0E0E0;
+    -webkit-tap-highlight-color: transparent;
 }
 
 .btn:hover {
