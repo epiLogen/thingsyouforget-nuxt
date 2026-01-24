@@ -1,7 +1,8 @@
 <script setup>
 import '~/assets/main.css'
 
-const quotes = ref(await $fetch('/api/quotes'))
+const client = useSupabaseClient()
+const quotes = ref(await fetchQuotes())
 const currentQuote = ref(null)
 const previousQuotes = ref([])
 
@@ -46,6 +47,18 @@ function rewindQuote() {
 onMounted(() => {
     getRandomQuote()
 })
+
+async function fetchQuotes() { 
+
+    const { data: quotes, error } = await client.from('quotes').select()
+    if(error) {
+        console.error('Error fetching quotes: ', error.message)
+        return null
+    }
+
+    console.log('quotes: ', quotes)
+    return quotes
+}
 </script>
 
 <template>

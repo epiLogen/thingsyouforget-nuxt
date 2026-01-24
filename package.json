@@ -1,5 +1,5 @@
 {
-  "name": "nuxt-app",
+  "name": "thingsyouforget",
   "private": true,
   "scripts": {
     "build": "nuxt build",
@@ -9,12 +9,10 @@
     "postinstall": "nuxt prepare"
   },
   "devDependencies": {
+    "@nuxt/icon": "^2.2.1",
     "@nuxtjs/google-fonts": "3.2.0",
+    "@nuxtjs/supabase": "^1.6.1",
     "@types/node": "^22.19.7",
-    "nuxt": "^4.3.0",
-    "@nuxt/icon": "^2.2.1"
-  },
-  "dependencies": {
-    "mongoose": "^8.21.1"
+    "nuxt": "^4.3.0"
   }
 }

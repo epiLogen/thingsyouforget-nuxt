@@ -11,9 +11,9 @@ const props = defineProps({
 <div class="quote-card">
     <div class="quote-text" v-html="quote.text"></div>
     <div class="quote-source">
-        <div class="voice">– {{ quote.voice }}</div>
+        <div class="voice">{{ "– " + quote.voice }}</div>
         <div class="source">
-            <span class="author">{{ quote.author + " | " }} </span>
+            <span class="author">{{ quote.author + " | " }}</span>
             <span class="book">{{ quote.book }}</span>
         </div>
     </div>
@@ -34,6 +34,7 @@ const props = defineProps({
 }
 
 .quote-text {
+    font-weight: 400;
 }
 
 .quote-source {
@@ -62,5 +63,8 @@ const props = defineProps({
         font-size: 1rem;
         width: 90vw;
     }
+}
+:deep(.it) {
+    font-style: italic;
 }
 </style>

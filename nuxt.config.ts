@@ -3,27 +3,25 @@ export default defineNuxtConfig({
   modules: [
       '@nuxt/icon',
       '@nuxtjs/google-fonts',
+      '@nuxtjs/supabase'
   ],
 
-  ssr: true,
+  ssr: false,
 
   googleFonts: {
       families: {
-          'EB+Garamond': true,
-          'Dancing+Script': true,
+           'EB Garamond': {
+                wght: [400, 500, 600, 700],
+                ital: [100],
+            },
       },
       display: 'block'
   },
 
-  runtimeConfig: {
-      MONGO_HOST: process.env.MONGO_HOST,
-      MONGO_ADMIN: process.env.MONGO_ADMIN,
-      MONGO_ADMIN_PASS: process.env.MONGO_ADMIN_PASS,
-      MONGO_DB: process.env.MONGO_DB
-  },
-
-  nitro: {
-      plugins: ['~/server/db/index.js']
+  supabase: {
+    url: process.env.SUPABASE_URL,
+    key: process.env.SUPABASE_KEY,
+    redirect: false
   },
 
   compatibilityDate: '2024-08-21'
