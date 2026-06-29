@@ -14,6 +14,7 @@ export default defineNuxtConfig({
                 wght: [400, 500, 600, 700],
                 ital: [100],
             },
+            'Dancing Script': [400]
       },
       display: 'block'
   },

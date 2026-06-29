@@ -67,10 +67,13 @@ async function fetchQuotes() {
 		<Title>Things You Forget</Title>
 
 		<header>
-			<div class="buttons">
-				<div class="btn" :class="{ 'disabled': !previousQuotes.length }" @click="rewindQuote"><Icon name="fa6-solid:rotate-left"/></div>
-				<div class="btn btn-shuffle" @click="getRandomQuote"><Icon name="fa6-solid:dice" /></div>
-			</div>
+            <div class="wrapper">
+                <p class="logo">things you forget...</p>
+                <div class="buttons">
+                    <div class="btn btn-rewind" :class="{ 'disabled': !previousQuotes.length }" @click="rewindQuote"><Icon name="fa6-solid:rotate-left"/></div>
+                    <div class="btn btn-shuffle" @click="getRandomQuote"><Icon name="fa6-solid:dice" /></div>
+                </div>
+            </div>
 		</header>
 
 		<main>
@@ -92,9 +95,7 @@ header {
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: inherit;
-    gap: 20px;
-    color: #d2e0e0;
+    color: #E0E0E0;
     padding: 40px 10px;
     user-select: none;
 }
@@ -120,6 +121,13 @@ footer {
     background-color: inherit;
 }
 
+.wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: min(90vw, 500px);
+}
+
 .disabled {
 	opacity: 0.3;
 	pointer-events: none;
@@ -139,22 +147,22 @@ footer {
     display: flex;
     gap: 20px;
     align-items: center;
-    padding-right: 70px;
+    justify-content: center;
 }
 
 .btn {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 50px;
     aspect-ratio: 1;
     border-radius: 50%;
-    transition: opacity 0.15s;
+    transition: all 0.2s;
     cursor: pointer;
     font-size: 1.5rem;
-    background-color: #282828;
     color: #E0E0E0;
     -webkit-tap-highlight-color: transparent;
+    background-color: #282828;
+    height: 50px;
 }
 
 .btn:hover {
@@ -165,8 +173,20 @@ footer {
     opacity: 0.6;
 }
 
+.btn-rewind {
+}
+
+.btn-rewind:hover {
+}
+
 .btn-shuffle {
-    height: 80px;
+
+}
+
+.logo {
+    font-size: 2.5rem;
+    font-family: 'Dancing Script';
+    text-align: center;
 }
 
 .fade-enter-from,
