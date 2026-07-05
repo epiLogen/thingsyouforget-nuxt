@@ -189,6 +189,13 @@ footer {
     text-align: center;
 }
 
+@media (max-width: 500px) {
+    .logo {
+        font-size: 1.8rem;
+        width: 90vw;
+    }
+}
+
 .fade-enter-from,
 .fade-leave-to {
     opacity: 0;
