@@ -56,7 +56,6 @@ async function fetchQuotes() {
         return null
     }
 
-    console.log('quotes: ', quotes)
     return quotes
 }
 </script>
@@ -186,12 +185,11 @@ footer {
 .logo {
     font-size: 2.5rem;
     font-family: 'Dancing Script';
-    text-align: center;
 }
 
 @media (max-width: 500px) {
     .logo {
-        font-size: 1.8rem;
+        font-size: 2rem;
         width: 90vw;
     }
 }
