@@ -35,6 +35,7 @@ const props = defineProps({
 
 .quote-text {
     font-weight: 400;
+    text-align: justify;
 }
 
 .quote-source {
